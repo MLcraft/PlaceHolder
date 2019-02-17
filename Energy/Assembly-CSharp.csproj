@@ -52,7 +52,12 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\FirstBossAI.cs" />
+     <Compile Include="Assets\Scripts\FirstBossProjectile2.cs" />
+     <Compile Include="Assets\Scripts\FirstBossProjectile3.cs" />
+     <Compile Include="Assets\Scripts\GameController.cs" />
+     <Compile Include="Assets\Scripts\GameoverButton.cs" />
      <Compile Include="Assets\Scripts\GrazingColliderController.cs" />
+     <Compile Include="Assets\Scripts\LoadMain.cs" />
      <Compile Include="Assets\Scripts\PlaceholderEnemyAI.cs" />
      <Compile Include="Assets\Scripts\PlaceholderPlayerProjectile.cs" />
      <Compile Include="Assets\Scripts\PlaceHolderProjectileScript.cs" />

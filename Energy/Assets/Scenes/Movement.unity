@@ -409,7 +409,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 480, y: -45.460007}
+  m_AnchoredPosition: {x: 480, y: -44.460007}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &138553890
@@ -916,8 +916,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 250
   focusSpeed: 125
-  health: 10
-  maxHealth: 10
+  health: 20
+  maxHealth: 20
   fuel: 100
   fuelText: {fileID: 787445027}
   fireRate: 0.1
@@ -1295,7 +1295,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 480, y: -12.5}
+  m_AnchoredPosition: {x: 480, y: -11.5}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &787445027
@@ -1653,10 +1653,10 @@ MonoBehaviour:
   bossText: {fileID: 138553890}
   bossBar: {fileID: 1350194096}
   stage1XOffset: 0
-  stage1YOffset: 0
-  stage1Speed: 4
+  stage1YOffset: 1
+  stage1Speed: 2
   stage1Width: 2
-  stage1Height: 2
+  stage1Height: 1
   stage1FireRate: 0.2
   stage2Health: 150
   stage2Speed: 2
@@ -2067,8 +2067,8 @@ MonoBehaviour:
   m_VerticalAxis: Vertical
   m_SubmitButton: Shoot
   m_CancelButton: Focus
-  m_InputActionsPerSecond: 1000
-  m_RepeatDelay: 0
+  m_InputActionsPerSecond: 10
+  m_RepeatDelay: 0.5
   m_ForceModuleActive: 0
 --- !u!114 &1651479659
 MonoBehaviour:
