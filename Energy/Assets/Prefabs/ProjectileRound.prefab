@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocityX: 0
-  velocityY: -1
+  velocityY: 0
 --- !u!212 &212628908142131190
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -17,7 +17,7 @@ public class GrazingColliderController : MonoBehaviour {
 		
 	}
 
-	void OnCollisionExit2D(Collision2D coll)
+	void OnCollisionEnter2D(Collision2D coll)
 	{
 		if (coll.gameObject.tag == "Projectile")
 		{

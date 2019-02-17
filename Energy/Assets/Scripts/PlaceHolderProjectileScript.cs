@@ -17,6 +17,12 @@ public class PlaceHolderProjectileScript : MonoBehaviour {
         _rb.velocity = new Vector2(velocityX, velocityY);
 	}
 
+    public void setVelocity(float x, float y)
+    {
+        velocityX = x;
+        velocityY = y;
+    }
+
 	void OnBecameInvisible() {
 		Destroy(gameObject);
 	}
