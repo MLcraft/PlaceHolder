@@ -57,6 +57,7 @@
      <Compile Include="Assets\Scripts\GameController.cs" />
      <Compile Include="Assets\Scripts\GameoverButton.cs" />
      <Compile Include="Assets\Scripts\GrazingColliderController.cs" />
+     <Compile Include="Assets\Scripts\InvincibleController.cs" />
      <Compile Include="Assets\Scripts\LoadMain.cs" />
      <Compile Include="Assets\Scripts\PlaceholderEnemyAI.cs" />
      <Compile Include="Assets\Scripts\PlaceholderPlayerProjectile.cs" />

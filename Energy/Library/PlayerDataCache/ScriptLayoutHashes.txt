@@ -51,7 +51,7 @@ f61c0793411f10cf5fbfa1473fef5ef2 UnityEngine.UI.dll:UnityEngine.UI.ToggleGroup
 86d36c43c53541d667100dc90b89cfba UnityEngine.UI.dll:UnityEngine.EventSystems.TouchInputModule
 1b8c02d0aa82fbf036a2b9b2d713eec3 UnityEngine.UI.dll:UnityEngine.UI.VerticalLayoutGroup
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.LoadMain
-c4a2ea97b4c6a2ba422b38ea0ea7ab84 Assembly-CSharp.dll:.PlayerController
+4d20383aeb5d4d70db5fe033b85d6069 Assembly-CSharp.dll:.PlayerController
 a35dc9cca2faebc5f5f1aeb9e8e47bbe UnityEngine.UI.dll:UnityEngine.UI.AspectRatioFitter
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.UI.dll:UnityEngine.EventSystems.BaseInput
 49cd62a578efc0a599b810a2b66cd49c UnityEngine.UI.dll:UnityEngine.UI.Button
@@ -154,3 +154,4 @@ c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.Spa
 631d57eab05be18c563d1a881e77a3f2 Assembly-CSharp.dll:.GrazingColliderController
 0d68b45ba71313f8efa8bede0f8e49f6 Assembly-CSharp.dll:.FirstBossProjectile2
 0d68b45ba71313f8efa8bede0f8e49f6 Assembly-CSharp.dll:.PlaceHolderProjectileScript
+631d57eab05be18c563d1a881e77a3f2 Assembly-CSharp.dll:.InvincibleController

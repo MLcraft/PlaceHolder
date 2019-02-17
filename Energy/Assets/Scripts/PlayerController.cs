@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     public int health;
     public int maxHealth;
     public float fuel;
+	public float invincibilityFrame;
     public Text fuelText;
     public float fireRate;         // Rate of fire
     public float energyRate;
@@ -19,7 +20,9 @@ public class PlayerController : MonoBehaviour
     public GameObject healthicon;
     public PlayerHitboxController hitbox;
     public GrazingColliderController grazing;
+	public InvincibleController invincible;
     public Image fuelBar;
+	public bool isInvincible;
 
     private States _state = States.Idle;            // Current State of the Player
     private float _xVelocity;                       // X Velocity of the player
@@ -29,6 +32,7 @@ public class PlayerController : MonoBehaviour
     private float _energyDelay;
     private Rigidbody2D _rb;
     private GameObject[] hearts;
+	private float _lastDamage;
 
     // Use this for initialization
     void Start()
@@ -43,12 +47,21 @@ public class PlayerController : MonoBehaviour
             hearts[i] = Instantiate(healthicon, healthIconPosition, Quaternion.identity);
         }
 
-        fuelBar.type = Image.Type.Filled;
+		fuelBar.type = Image.Type.Filled;
+		_lastDamage = 0;
+		isInvincible = false;
+		invincible.gameObject.GetComponent<Renderer>().enabled = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+		if (Time.time - _lastDamage <= invincibilityFrame) {
+			isInvincible = true;
+		} else {
+			isInvincible = false;
+		}
+
         CheckPlayerInput();
 
         UpdateHealth();
@@ -96,6 +109,7 @@ public class PlayerController : MonoBehaviour
         _rb.velocity = new Vector2(_xVelocity, _yVelocity);
         hitbox.setVelocity(new Vector2(_xVelocity, _yVelocity));
         grazing.setVelocity(new Vector2(_xVelocity, _yVelocity));
+		invincible.setVelocity(new Vector2 (_xVelocity, _yVelocity));
     }
 
     void CheckPlayerInput()
@@ -127,8 +141,11 @@ public class PlayerController : MonoBehaviour
     {
         if (coll.gameObject.tag == "Projectile")
         {
-            Destroy(coll.gameObject);
-            health -= 1;
+			if (!isInvincible){
+				_lastDamage = Time.time;
+				Destroy (coll.gameObject);
+				health -= 1;
+			}
         }
     }
 
