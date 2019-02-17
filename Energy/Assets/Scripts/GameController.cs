@@ -13,7 +13,6 @@ public class GameController : MonoBehaviour
     public Sprite playerPort;
     public Sprite bossPort;
     public Text victoryText;
-    public Text gameoverText;
     private bool _runOnce;
     private string[] _lines;
     private int _count;
@@ -39,7 +38,6 @@ public class GameController : MonoBehaviour
 
         _part = 0;
         victoryText.gameObject.SetActive(false);
-        gameoverText.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -102,7 +100,7 @@ public class GameController : MonoBehaviour
                 playerPort, bossPort, playerPort, bossPort, playerPort, bossPort, playerPort
             };
         }
-        if (player.GetComponent<PlayerController>().health <= 0)
+		if (player.GetComponent<PlayerController>().health <= 0 || player.GetComponent<PlayerController>().fuel <= 0)
         {
             SceneManager.LoadScene("Gameover", LoadSceneMode.Single);
         }

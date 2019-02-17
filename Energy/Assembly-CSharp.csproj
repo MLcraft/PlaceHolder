@@ -63,6 +63,7 @@
      <Compile Include="Assets\Scripts\PlaceHolderProjectileScript.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
      <Compile Include="Assets\Scripts\PlayerHitboxController.cs" />
+     <Compile Include="Assets\Scripts\QuitGame.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
