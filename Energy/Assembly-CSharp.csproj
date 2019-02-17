@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\FirstBossAI.cs" />
+     <Compile Include="Assets\Scripts\GrazingColliderController.cs" />
      <Compile Include="Assets\Scripts\PlaceholderEnemyAI.cs" />
      <Compile Include="Assets\Scripts\PlaceholderPlayerProjectile.cs" />
      <Compile Include="Assets\Scripts\PlaceHolderProjectileScript.cs" />

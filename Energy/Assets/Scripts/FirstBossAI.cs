@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FirstBossAI : MonoBehaviour
 {
@@ -9,6 +10,10 @@ public class FirstBossAI : MonoBehaviour
     public float fireRate;         // Rate of fire
     public float health;
     public float speed;
+	public Text victoryText;
+	public AudioSource stage1Music;
+	public AudioSource stage2Music;
+	public AudioSource stage3Music;
     public GameObject projectile;   // Projectile to be fired
 
     private float _delay;           // Delay until the next shot
@@ -25,6 +30,7 @@ public class FirstBossAI : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+		victoryText.gameObject.SetActive(false);
         _rb = GetComponent<Rigidbody2D>();
         _xVelocity = speed;
         _stage2Health = 20;
@@ -37,8 +43,10 @@ public class FirstBossAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (health <= 0)
-            Destroy(gameObject);
+		if (health <= 0) {
+			victoryText.gameObject.SetActive(true);
+			DeleteAll ();
+		}
         if (_delay <= 0)
         {
             _delay += fireRate;
@@ -78,6 +86,12 @@ public class FirstBossAI : MonoBehaviour
     {
         if (_AIStage == AIStage.Stage1)
         {
+			if (!stage1Music.isPlaying) {
+				stage2Music.Stop();
+				stage3Music.Stop();
+				stage1Music.loop = true;
+				stage1Music.Play();
+			}
             if (Camera.main.WorldToViewportPoint(transform.position).x < 0 && _xVelocity < 0)
                 _xVelocity = speed;
             if (Camera.main.WorldToViewportPoint(transform.position).x > 1 && _xVelocity > 0)
@@ -85,6 +99,12 @@ public class FirstBossAI : MonoBehaviour
         }
         else if (_AIStage == AIStage.Stage2)
         {
+			if (!stage2Music.isPlaying) {
+				stage1Music.Stop();
+				stage3Music.Stop();
+				stage2Music.loop = true;
+				stage2Music.Play();
+			}
             GameObject player = GameObject.FindGameObjectWithTag("Player");
 
             float xPos = transform.position.x;
@@ -99,7 +119,13 @@ public class FirstBossAI : MonoBehaviour
                 _xVelocity = -_stage2Speed;
         }
         else if (_AIStage == AIStage.Stage3)
-        {
+		{
+			if (!stage3Music.isPlaying) {
+				stage1Music.Stop();
+				stage2Music.Stop();
+				stage3Music.loop = true;
+				stage3Music.Play();
+			}
             GameObject player = GameObject.FindGameObjectWithTag("Player");
 
             float xPos = transform.position.x;
@@ -114,4 +140,11 @@ public class FirstBossAI : MonoBehaviour
                 _xVelocity = -_stage2Speed;
         }
     }
+
+	void DeleteAll(){
+		foreach (GameObject o in Object.FindObjectsOfType<GameObject>()) {
+			if (o.tag != "MainCamera")
+				Destroy(o);
+		}
+	}
 }

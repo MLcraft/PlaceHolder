@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -8,30 +9,49 @@ public class PlayerController : MonoBehaviour
 
     public float speed;                             // Movement Speed of the player
     public float focusSpeed;
-    public float health;
-    public float maxHealth;
+    public int health;
+    public int maxHealth;
 	public float fuel;
+	public Text fuelText;
+	public Text gameOverText;
 	public float fireRate;         // Rate of fire
+	public float energyRate;
 	public GameObject projectile;
+	public GameObject healthicon;
 	public PlayerHitboxController hitbox;
+	public GrazingColliderController grazing;
 
     private States _state = States.Idle;            // Current State of the Player
     private float _xVelocity;                       // X Velocity of the player
     private float _yVelocity;                       // Y Velocity of the player
     private bool _isFocused;                        // Focused Mechanic
 	private float _delay;           // Delay until the next shot
+	private float _energyDelay;
     private Rigidbody2D _rb;
+	private GameObject[] hearts;
 
     // Use this for initialization
     void Start()
     {
+		gameOverText.gameObject.SetActive(false);
         _rb = GetComponent<Rigidbody2D>();
+		hearts = new GameObject[maxHealth];
+		for(int i = 0; i < maxHealth; i++) {
+			float iconX = Camera.main.ViewportToWorldPoint(new Vector3(1,1,1)).x - i*healthicon.GetComponent<Renderer>().bounds.size.x - healthicon.GetComponent<Renderer>().bounds.size.x/2 - 0.025f*i;
+			float iconY = Camera.main.ViewportToWorldPoint(new Vector3(1,1,1)).y - 0.1f;
+			Vector3 healthIconPosition = new Vector3(iconX, iconY, -2);
+			hearts[i] = Instantiate(healthicon, healthIconPosition, Quaternion.identity);
+		}
     }
 
     // Update is called once per frame
     void Update()
     {
         CheckPlayerInput();
+
+		UpdateHealth();
+
+		UpdateFuel();
 
         if (_isFocused)
         {
@@ -53,7 +73,16 @@ public class PlayerController : MonoBehaviour
 		}
 		else
 			_delay -= Time.deltaTime;
-		
+
+		if (_energyDelay <= 0)
+		{
+			_energyDelay += energyRate;
+			// Create Projectile
+			fuel -= 10;
+		}
+		else
+			_energyDelay -= Time.deltaTime;
+
 		if (Camera.main.WorldToViewportPoint (transform.position).x < 0 && _xVelocity < 0)
 			_xVelocity = 0;
 		if (Camera.main.WorldToViewportPoint(transform.position).x > 1 && _xVelocity > 0) 
@@ -64,6 +93,7 @@ public class PlayerController : MonoBehaviour
 			_yVelocity = 0;
 		_rb.velocity = new Vector2(_xVelocity, _yVelocity);
 		hitbox.setVelocity(new Vector2 (_xVelocity, _yVelocity));
+		grazing.setVelocity(new Vector2 (_xVelocity, _yVelocity));
     }
 
     void CheckPlayerInput()
@@ -107,4 +137,41 @@ public class PlayerController : MonoBehaviour
         else
             _isFocused = false;
     }
+
+	void UpdateHealth() {
+		// Update health bar visuals
+		if (health <= 0) {
+			hearts [0].GetComponent<Renderer> ().enabled = false;
+			gameOverText.gameObject.SetActive(true);
+			DeleteAll ();
+		} else {
+			for (int i = 0; i < health; i++) {
+				hearts [i].GetComponent<Renderer> ().enabled = true;
+			}
+			for (int i = health; i < maxHealth; i++) {
+				hearts [i].GetComponent<Renderer> ().enabled = false;
+			}
+		}
+
+	}
+
+	void UpdateFuel() {
+		if (fuel <= 0) {
+			gameOverText.gameObject.SetActive(true);
+			DeleteAll ();
+		} else {
+			fuelText.text = fuel.ToString();
+		}
+	}
+
+	public void gainFuel() {
+		fuel += 25;
+	}
+
+	void DeleteAll(){
+		foreach (GameObject o in Object.FindObjectsOfType<GameObject>()) {
+			if (o.tag != "MainCamera")
+				Destroy(o);
+		}
+	}
 }
