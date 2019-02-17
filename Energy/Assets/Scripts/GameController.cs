@@ -29,12 +29,14 @@ public class GameController : MonoBehaviour
             "Sirbot: GAH, THIS BACKUP BATTERY WON'T LAST MUCH LONGER...",
             "*Sirbot spots nameless main character*",
             "Sirbot: YOU THERE! GIVE ME THAT JETPACK!",
-            "Dude: wait what hell no"
+            "Dude: wait what hell no",
+			"Controls:\nArrow keys to move\nZ to shoot",
+			"Hold shift for focus (slow down movement and show hitbox)\nSeriously, it's a shmup, how hard can this be?"
         };
 
         _portraits = new Sprite[] {
-                bossPort, bossPort, bossPort, playerPort
-            };
+			bossPort, bossPort, bossPort, playerPort,playerPort, playerPort
+        };
 
         _part = 0;
         victoryText.gameObject.SetActive(false);

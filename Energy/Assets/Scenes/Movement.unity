@@ -138,7 +138,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: e2201845547a5894492fd797fbaa3329, type: 3}
+  m_audioClip: {fileID: 8300000, guid: b7181e2e783beb14dbba26f9ac16d9c3, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -734,7 +734,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: e2201845547a5894492fd797fbaa3329, type: 3}
+  m_audioClip: {fileID: 8300000, guid: b7181e2e783beb14dbba26f9ac16d9c3, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -1265,7 +1265,7 @@ MonoBehaviour:
   dialogue: {fileID: 1516166322}
   dialoguePortrait: {fileID: 842489620}
   dialogueText: {fileID: 432929037}
-  playerPort: {fileID: 21300000, guid: 6898fe2944bc0424480551225958214e, type: 3}
+  playerPort: {fileID: 21300000, guid: 7a9ecd231b251074391127ff5ee4c4fa, type: 3}
   bossPort: {fileID: 21300000, guid: 0fbc2cea1972d454d8d9a0fde5423e38, type: 3}
   victoryText: {fileID: 898641749}
 --- !u!4 &782410098
@@ -1729,7 +1729,7 @@ MonoBehaviour:
   speed: 10
   victoryText: {fileID: 0}
   stage1Music: {fileID: 322351644}
-  stage2Music: {fileID: 53492701}
+  stage2Music: {fileID: 322351644}
   stage3Music: {fileID: 1384708358}
   projectile: {fileID: 1023212219914274, guid: c9f3eda6911731840b9d4c54c705ed2c, type: 2}
   projectile2: {fileID: 1176332017964042, guid: 749cdc76a408f5e4bab74fd39ad9a0ce,
